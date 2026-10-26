@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+
+  /* Primary Surfaces */
+  --app-background: #101112;
+  --sidebar-background: #151719;
+  --surface-primary: #181A1C;
+  --surface-secondary: #1D2023;
+  --surface-elevated: #22262A;
+  --surface-table: #141619;
+  --surface-input: #111316;
+
+  /* Borders */
+  --border-subtle: #2D3237;
+  --border-strong: #41474E;
+  --border-focus: #8EA8C5;
+
+  /* Typography */
+  --text-primary: #F1EEE7;
+  --text-secondary: #B0B5BC;
+  --text-muted: #858D97;
+  --text-disabled: #5E6570;
+
+  /* Brand & Accents */
+  --accent-primary: #D8D0C0;
+  --accent-hover: #E5DECF;
+  --accent-text: #17191B;
+
+  /* Semantic Status */
+  --positive: #45BD91;
+  --positive-bg: #142A23;
+  --positive-border: #285D49;
+
+  --negative: #E47777;
+  --negative-bg: #301C1E;
+  --negative-border: #704044;
+
+  --informational: #8EA8C5;
+  --informational-bg: #1B232D;
+  --informational-border: #334356;
+
+  --warning: #D5B16D;
+  --warning-bg: #2B2417;
+  --warning-border: #5C4B2C;
+
+  /* Spacing Tokens */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--app-background);
+  color: var(--text-primary);
+  font-family: var(--font-sans), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--accent-primary);
+  color: var(--accent-text);
+}
+
+/* Institutional Clean Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--app-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ==========================================================================
+   INK WASH TERMINAL SURFACES & COMPONENTS
+   ========================================================================== */
+
+/* Main Panels & Containers */
+.dashboard-panel,
+.terminal-panel {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Analytical & KPI Cards */
+.kpi-card,
+.analytical-card {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.kpi-card:hover,
+.analytical-card:hover {
+  background: var(--surface-secondary);
+  border-color: var(--border-strong);
+}
+
+/* Sticky Table Header */
+.terminal-sticky-thead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--surface-table);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Financial Tabular Numbers */
+.tabular-data-num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* Inputs & Form Controls */
+.interactive-control,
+.terminal-input {
+  background: var(--surface-input);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.interactive-control:focus,
+.interactive-control:focus-visible,
+.terminal-input:focus,
+.terminal-input:focus-visible {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 1px var(--border-focus);
+}
+
+/* Clean Institutional Badges / Pills */
+.ink-pill {
+  background-color: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+/* Institutional Sidebar Navigation */
+.terminal-sidebar-container {
+  background: var(--sidebar-background);
+  border-right: 1px solid var(--border-subtle);
+}
+
+.terminal-nav-item {
+  font-family: var(--font-sans), 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: background-color 140ms ease, color 140ms ease;
+  border: 1px solid transparent;
+}
+
+.terminal-nav-item:hover:not(.active) {
+  background: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.terminal-nav-item.active {
+  background: var(--accent-primary);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.terminal-nav-item.active svg {
+  color: var(--accent-text) !important;
+}
+
+.terminal-nav-item.active .nav-label {
+  color: var(--accent-text) !important;
+}
+
+.terminal-nav-item.active .nav-badge {
+  background: #17191B !important;
+  color: #F1EEE7 !important;
+  border: 1px solid #2D3237 !important;
+}
+
+.terminal-nav-section-title {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Opaque Institutional Login Card */
+.login-card {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+}
+
+/* Subtle Functional Animations */
+@keyframes ink-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: ink-fade-in 140ms ease-out forwards;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
